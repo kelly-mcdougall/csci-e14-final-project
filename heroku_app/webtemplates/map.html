@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<style>
+
+  #map {
+    height: 1200px;
+   }
+
+   /*
+    * Use this style for full page map
+    * Set the size of the div element that contains the map
+
+
+   html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  */
+</style>
+
+
+<!--
+<div class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-plain">
+        <div class="card-header">
+          Map
+        </div>
+        <div class="card-body">
+          <div id="map" class="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
+<div id="map" class="map"></div>
+
+
+<script>
+// Initialize and add the map
+function initMap() {
+// The location of Uluru
+var myCenter = {lat: 42.361145, lng: -71.057083};
+// The map, centered at Uluru
+var map = new google.maps.Map(
+  document.getElementById('map'), {
+    zoom: 14,
+    center: myCenter,
+    styles: [
+          {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+          {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+          {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+          {
+            featureType: 'administrative.locality',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#d59563'}]
+          },
+          {
+            featureType: 'poi',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#d59563'}]
+          },
+          {
+            featureType: 'poi.park',
+            elementType: 'geometry',
+            stylers: [{color: '#263c3f'}]
+          },
+          {
+            featureType: 'poi.park',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#6b9a76'}]
+          },
+          {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [{color: '#38414e'}]
+          },
+          {
+            featureType: 'road',
+            elementType: 'geometry.stroke',
+            stylers: [{color: '#212a37'}]
+          },
+          {
+            featureType: 'road',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#9ca5b3'}]
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'geometry',
+            stylers: [{color: '#746855'}]
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [{color: '#1f2835'}]
+          },
+          {
+            featureType: 'road.highway',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#f3d19c'}]
+          },
+          {
+            featureType: 'transit',
+            elementType: 'geometry',
+            stylers: [{color: '#2f3948'}]
+          },
+          {
+            featureType: 'transit.station',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#d59563'}]
+          },
+          {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [{color: '#17263c'}]
+          },
+          {
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [{color: '#515c6d'}]
+          },
+          {
+            featureType: 'water',
+            elementType: 'labels.text.stroke',
+            stylers: [{color: '#17263c'}]
+          }
+        ]
+      });
+// The marker, positioned at Uluru
+var marker = new google.maps.Marker({
+  position: myCenter,
+  map: map,
+  draggable:true,
+  title: "Drag me"
+});
+}
+
+</script>
+<!--Load the API from the specified URL
+* The async attribute allows the browser to render the page while the API loads
+* The key parameter will contain your own API key (which is not needed for this tutorial)
+* The callback parameter executes the initMap() function
+-->
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJu9e2pp4G7OTEqBWg_rJHhGDqdTXxLCw&callback=initMap">
+</script>
+
+{% endblock %}
